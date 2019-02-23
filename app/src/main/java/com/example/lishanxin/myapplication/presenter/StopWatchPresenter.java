@@ -94,6 +94,8 @@ public class StopWatchPresenter implements StopWatchContract.Presenter {
             return formatTime(currentTime);
         }
 
+        // run()方法获取系统时间数据，并传入onTimeChange方法中，进行界面展示时间。
+        // 最后调用mHandler.postDelayed方法：在指定时间间隔后，再重新调用run()方法。
         @Override
         public void run() {
             if (mWatchStatus == WATCH_START){
