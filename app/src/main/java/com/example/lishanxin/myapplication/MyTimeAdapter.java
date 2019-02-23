@@ -41,7 +41,6 @@ public class MyTimeAdapter extends RecyclerView.Adapter<MyTimeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        // 只有一种数据，所以不对viewType进行判断处理
         viewHolder.bind(mDataList.get(position), position);
     }
 

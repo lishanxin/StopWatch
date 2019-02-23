@@ -103,9 +103,7 @@ public class StopWatchPresenter implements StopWatchContract.Presenter {
                 mView.onTimeChange(time);
                 mHandler.postDelayed(this, 20);
             }else {
-                if (this.startTime == -1){
-                    return;
-                }
+                //如果被停止，则保存停止时的秒表总时间
                 lastTotalTime += periodTime;
             }
         }
