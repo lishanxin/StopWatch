@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">StopWatch</string>
+    <string name="start_watch">开始</string>
+    <string name="stop_watch">停止</string>
+    <string name="refresh_watch">重置</string>
+    <string name="start_time">00:00:00</string>
+    <string name="num_count">计次</string>
+</resources>
