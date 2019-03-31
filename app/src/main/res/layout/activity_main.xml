@@ -6,31 +6,49 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/start"
+            android:text="@string/start_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/stop"
+            android:text="@string/stop_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/refresh"
+            android:text="@string/refresh_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/catch_time"
+            android:text="@string/num_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
     <Button
-        android:id="@+id/start"
-        android:text="@string/start_watch"
+        android:id="@+id/test_btn"
+        android:text="@string/test_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/stop"
-        android:text="@string/stop_watch"
+        android:id="@+id/image_recycler_test"
+        android:text="@string/image_recycler_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-
-    <Button
-        android:id="@+id/refresh"
-        android:text="@string/refresh_watch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/catch_time"
-        android:text="@string/num_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <TextView
         android:id="@+id/time_show"
         android:gravity="center"

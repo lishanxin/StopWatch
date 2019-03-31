@@ -1,15 +1,21 @@
 package com.example.lishanxin.myapplication;
 
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Debug;
+import android.support.v4.os.TraceCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lishanxin.myapplication.presenter.StopWatchContract;
 import com.example.lishanxin.myapplication.presenter.StopWatchPresenter;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
 //MVP模式V层实现类，实现了StopWatchContract.View的相关职责。
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, StopWatchContract.View {
@@ -24,10 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TraceCompat.beginSection("AppOnCreate");
         setContentView(R.layout.activity_main);
 
         initLayout();
         initPresenter();
+        TraceCompat.endSection();
     }
 
     private void initPresenter() {
@@ -39,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button mStartBtn = findViewById(R.id.start);
         Button mStopBtn = findViewById(R.id.stop);
         Button mRefreshBtn = findViewById(R.id.refresh);
+        Button mTestBtn = findViewById(R.id.test_btn);
+        Button mTestImage = findViewById(R.id.image_recycler_test);
         mTimeShow = findViewById(R.id.time_show);
         Button mCatchBtn = findViewById(R.id.catch_time);
         mRecycler = findViewById(R.id.recycler);
@@ -48,7 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mStopBtn.setOnClickListener(this);
         mRefreshBtn.setOnClickListener(this);
         mCatchBtn.setOnClickListener(this);
-
+        mTestBtn.setOnClickListener(this);
+        mTestImage.setOnClickListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
         manager.setStackFromEnd(true);
         manager.setReverseLayout(true);
@@ -76,6 +87,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.catch_time:
                 mPresenter.getTime();
+                KProgressHUD hud = KProgressHUD.create(MainActivity.this)
+                        .setStyle(KProgressHUD.Style.ANNULAR_DETERMINATE)
+                        .setLabel("Please wait")
+                        .setMaxProgress(100)
+                        .show();
+                hud.setProgress(90);
+                break;
+            case R.id.test_btn:
+                KProgressHUD.create(MainActivity.this)
+                        .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                        .setLabel("Please wait")
+                        .setDetailsLabel("Downloading data")
+                        .setCancellable(true)
+                        .setAnimationSpeed(2)
+                        .setDimAmount(0.5f)
+                        .show();
+                break;
+            case R.id.image_recycler_test:
+                Intent intent = new Intent(MainActivity.this, ImageRecyclerActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
